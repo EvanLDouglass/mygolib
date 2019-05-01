@@ -23,7 +23,7 @@ type Set struct {
 	set map[interface{}]bool
 }
 
-// NewSet creates an empty set and returns a pointer to it.
+// NewSet creates a set and returns a pointer to it.
 // Allows setting a variadic number of initial elements.
 // Go will not allow unpacking of slices unless first made into
 // type []interface{}.
