@@ -49,7 +49,7 @@ func (s *Set) IsEmpty() bool {
 	return s.Len() == 0
 }
 
-// AddVal adds a variadic number of elements to a set.
+// AddVal adds an element to a set.
 func (s *Set) AddVal(val interface{}) {
 	s.set[val] = true
 }
