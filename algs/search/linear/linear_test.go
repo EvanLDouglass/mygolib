@@ -37,6 +37,12 @@ func TestLinear(t *testing.T) {
 		if got != c.expected {
 			t.Errorf("SentinelSearch(%v, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
 		}
+
+		// test RecursiveSearch
+		got = RecursiveSearch(c.inArr, 0, c.inVal)
+		if got != c.expected {
+			t.Errorf("RecursiveSearch(%v, 0, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
+		}
 	}
 }
 
@@ -56,6 +62,14 @@ func BenchmarkSentinelSearch(b *testing.B) {
 	}
 }
 
+func BenchmarkRecursiveSearch(b *testing.B) {
+	arr := make([]int, 10000)
+	val := 1 // will not be found
+	for i := 0; i < b.N; i++ {
+		RecursiveSearch(arr, 0, val)
+	}
+}
+
 func BenchmarkSearchLarge(b *testing.B) {
 	arr := make([]int, 1000000)
 	val := 1 // will not be found
@@ -69,5 +83,13 @@ func BenchmarkSentinelSearchLarge(b *testing.B) {
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
 		SentinelSearch(arr, val)
+	}
+}
+
+func BenchmarkRecursiveSearchLarge(b *testing.B) {
+	arr := make([]int, 1000000)
+	val := 1 // will not be found
+	for i := 0; i < b.N; i++ {
+		RecursiveSearch(arr, 0, val)
 	}
 }
