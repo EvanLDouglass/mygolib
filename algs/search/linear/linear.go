@@ -1,4 +1,5 @@
 // Package linear contains linear search algorithms. These are academic exercises.
+// Author: Evan Douglass
 package linear
 
 // Search searches a slice of ints for the given value.
