@@ -6,7 +6,7 @@ var none = []int{}
 var one = []int{1}
 var two = []int{1, 3}
 var three = []int{2, 4, 6}
-var many = []int{1, 1, 2, 4, 5, 5, 5, 6, 10, 22, 2, 80, 90, 90, 90, 90, 90}
+var many = []int{1, 1, 2, 4, 5, 5, 5, 6, 10, 22, 22, 80, 90, 90, 90, 90, 90}
 
 func TestSearch(t *testing.T) {
 	cases := []struct {
