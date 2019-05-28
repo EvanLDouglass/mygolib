@@ -1,15 +1,17 @@
-// Package binary contains binary search algorithms.
+// Package search contains search algorithms.
 // These are academic exercises, not meant for use in production.
 // Author: Evan Douglass
-package binary
+package search
+
+// This file contains binary search algorithms
 
 // NOT_FOUND represents the return value when a search is unsuccessful.
 const NOT_FOUND int = -1
 
-// Search conducts a binary search on a sorted array. If the array given is not
+// Binary conducts a binary search on a sorted array. If the array given is not
 // sorted, bad things will happen!
 // Returns the index of the first found occurrence of val, or -1 if not found.
-func Search(arr []int, val int) int {
+func Binary(arr []int, val int) int {
 	p := 0
 	r := len(arr) - 1
 
@@ -27,15 +29,15 @@ func Search(arr []int, val int) int {
 	return NOT_FOUND
 }
 
-// RecursiveSearch conducts a recursive binary search on a sorted array.
+// BinaryRecursive conducts a recursive binary search on a sorted array.
 // If the array given is not sorted, bad things will happen!
 // Returns the index of the first found occurrence of val, or -1 if not found.
-func RecursiveSearch(arr []int, val int) int {
+func BinaryRecursive(arr []int, val int) int {
 	end := len(arr) - 1
 	return recursiveSearchHelper(arr, 0, end, val)
 }
 
-// Helper for RecursiveSearch
+// Helper for BinaryRecursive
 func recursiveSearchHelper(arr []int, p int, r int, val int) int {
 	if p > r {
 		return NOT_FOUND

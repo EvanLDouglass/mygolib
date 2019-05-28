@@ -1,4 +1,4 @@
-package linear
+package search
 
 import "testing"
 
@@ -26,22 +26,22 @@ func TestLinear(t *testing.T) {
 		},
 	}
 	for _, c := range cases {
-		// test Search
-		got := Search(c.inArr, c.inVal)
+		// test Linear
+		got := Linear(c.inArr, c.inVal)
 		if got != c.expected {
-			t.Errorf("Search(%v, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
+			t.Errorf("Linear(%v, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
 		}
 
-		// test SentinelSearch
-		got = SentinelSearch(c.inArr, c.inVal)
+		// test LinearSentinel
+		got = LinearSentinel(c.inArr, c.inVal)
 		if got != c.expected {
-			t.Errorf("SentinelSearch(%v, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
+			t.Errorf("LinearSentinel(%v, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
 		}
 
-		// test RecursiveSearch
-		got = RecursiveSearch(c.inArr, 0, c.inVal)
+		// test LinearRecursive
+		got = LinearRecursive(c.inArr, 0, c.inVal)
 		if got != c.expected {
-			t.Errorf("RecursiveSearch(%v, 0, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
+			t.Errorf("LinearRecursive(%v, 0, %v) == %v, expected %v", c.inArr, c.inVal, got, c.expected)
 		}
 	}
 }
@@ -50,7 +50,7 @@ func BenchmarkSearch(b *testing.B) {
 	arr := make([]int, 10000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		Search(arr, val)
+		Linear(arr, val)
 	}
 }
 
@@ -58,7 +58,7 @@ func BenchmarkSentinelSearch(b *testing.B) {
 	arr := make([]int, 10000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		SentinelSearch(arr, val)
+		LinearSentinel(arr, val)
 	}
 }
 
@@ -66,15 +66,15 @@ func BenchmarkRecursiveSearch(b *testing.B) {
 	arr := make([]int, 10000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		RecursiveSearch(arr, 0, val)
+		LinearRecursive(arr, 0, val)
 	}
 }
 
-func BenchmarkSearchLarge(b *testing.B) {
+func BenchmarkLinearSearchLarge(b *testing.B) {
 	arr := make([]int, 1000000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		Search(arr, val)
+		Linear(arr, val)
 	}
 }
 
@@ -82,14 +82,14 @@ func BenchmarkSentinelSearchLarge(b *testing.B) {
 	arr := make([]int, 1000000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		SentinelSearch(arr, val)
+		LinearSentinel(arr, val)
 	}
 }
 
-func BenchmarkRecursiveSearchLarge(b *testing.B) {
+func BenchmarkLinearRecursiveSearchLarge(b *testing.B) {
 	arr := make([]int, 1000000)
 	val := 1 // will not be found
 	for i := 0; i < b.N; i++ {
-		RecursiveSearch(arr, 0, val)
+		LinearRecursive(arr, 0, val)
 	}
 }

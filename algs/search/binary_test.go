@@ -1,4 +1,4 @@
-package binary
+package search
 
 import "testing"
 
@@ -8,7 +8,7 @@ var two = []int{1, 3}
 var three = []int{2, 4, 6}
 var many = []int{1, 1, 2, 4, 5, 5, 5, 6, 10, 22, 22, 80, 90, 90, 90, 90, 90}
 
-func TestSearch(t *testing.T) {
+func TestBinarySearch(t *testing.T) {
 	cases := []struct {
 		inArr    []int
 		inVal    int
@@ -32,15 +32,15 @@ func TestSearch(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		got := Search(c.inArr, c.inVal)
+		got := Binary(c.inArr, c.inVal)
 		if got != c.expected {
-			t.Errorf("Search(%v, %v) == %v, expected %v",
+			t.Errorf("Binary(%v, %v) == %v, expected %v",
 				c.inArr, c.inVal, got, c.expected)
 		}
 	}
 }
 
-func TestRecursiveSearch(t *testing.T) {
+func TestBinaryRecursiveSearch(t *testing.T) {
 	cases := []struct {
 		inArr    []int
 		inVal    int
@@ -64,38 +64,38 @@ func TestRecursiveSearch(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		got := RecursiveSearch(c.inArr, c.inVal)
+		got := BinaryRecursive(c.inArr, c.inVal)
 		if got != c.expected {
-			t.Errorf("RecursiveSearch(%v, %v) == %v, expected %v",
+			t.Errorf("BinaryRecursive(%v, %v) == %v, expected %v",
 				c.inArr, c.inVal, got, c.expected)
 		}
 	}
 }
 
-func BenchmarkSearchSmall(b *testing.B) {
+func BenchmarkBinarySearchSmall(b *testing.B) {
 	arr := make([]int, 1000) // filled with zeros
 	for i := 0; i < b.N; i++ {
-		Search(arr, 1)
+		Binary(arr, 1)
 	}
 }
 
-func BenchmarkRecursiveSearchSmall(b *testing.B) {
+func BenchmarkBinaryRecursiveSearchSmall(b *testing.B) {
 	arr := make([]int, 1000)
 	for i := 0; i < b.N; i++ {
-		RecursiveSearch(arr, 1)
+		BinaryRecursive(arr, 1)
 	}
 }
 
-func BenchmarkSearchLarge(b *testing.B) {
+func BenchmarkBinarySearchLarge(b *testing.B) {
 	arr := make([]int, 1000000) // filled with zeros
 	for i := 0; i < b.N; i++ {
-		Search(arr, 1)
+		Binary(arr, 1)
 	}
 }
 
-func BenchmarkRecursiveSearchLarge(b *testing.B) {
+func BenchmarkBinaryRecursiveSearchLarge(b *testing.B) {
 	arr := make([]int, 1000000) // filled with zeros
 	for i := 0; i < b.N; i++ {
-		RecursiveSearch(arr, 1)
+		BinaryRecursive(arr, 1)
 	}
 }

@@ -1,10 +1,11 @@
-// Package linear contains linear search algorithms. These are academic exercises.
+// This file contains linear search algorithms.
 // Author: Evan Douglass
-package linear
 
-// Search searches a slice of ints for the given value.
+package search
+
+// Linear searches a slice of ints for the given value.
 // It returns the index of the first occurrence of value if found, or -1 if not found.
-func Search(arr []int, value int) int {
+func Linear(arr []int, value int) int {
 	for i, v := range arr {
 		if v == value {
 			return i
@@ -13,10 +14,10 @@ func Search(arr []int, value int) int {
 	return -1
 }
 
-// SentinelSearch searches a slice of ints for the given value using a
+// LinearSentinel searches a slice of ints for the given value using a
 // sentinel value strategy.
 // It returns the index of the first occurrence of value if found, or -1 if not found.
-func SentinelSearch(arr []int, value int) int {
+func LinearSentinel(arr []int, value int) int {
 	length := len(arr)
 	if length == 0 {
 		return -1
@@ -41,16 +42,15 @@ func SentinelSearch(arr []int, value int) int {
 	return -1
 }
 
-// RecursiveSearch searches a slice of ints for the given value using a
+// LinearRecursive searches a slice of ints for the given value using a
 // recursive strategy.
 // It returns the index of the first occurrence of value if found, or -1 if not found.
-func RecursiveSearch(arr []int, i int, val int) int {
+func LinearRecursive(arr []int, i int, val int) int {
 	if i >= len(arr) {
 		return -1
-	} else {
-		if arr[i] == val {
-			return i
-		}
-		return RecursiveSearch(arr, i+1, val)
 	}
+	if arr[i] == val {
+		return i
+	}
+	return LinearRecursive(arr, i+1, val)
 }
