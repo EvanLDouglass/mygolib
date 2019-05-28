@@ -7,4 +7,4 @@ It was created to help me learn algorithm textbook material by implementing the 
 
 'set' is a mini-project I decided to write after finishing an online, introductory course teaching Go.
 It was inspired by an article on the official golang website that mentioned the posibility of implementing a simple set using a map.
-It is very basic and probably should not be used, but was a fun exersize.
+It is very basic and probably should not be used, but was a fun exersise.
